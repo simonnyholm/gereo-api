@@ -1,0 +1,30 @@
+{
+  "name": "gereo-api",
+  "version": "1.0.0",
+  "description": "REST API for Gereo",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonnyholm/gereo-api.git"
+  },
+  "keywords": [],
+  "author": "Simon Nyholm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simonnyholm/gereo-api/issues"
+  },
+  "homepage": "https://github.com/simonnyholm/gereo-api#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^4.12.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
