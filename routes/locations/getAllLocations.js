@@ -8,7 +8,6 @@ function URLBuilder(id, resource) {
 }
 
 export default async function getAllLocations(request, response) {
-  console.log("bøh");
   const id = request.params.id;
   const limit = parseInt(request.query.limit || 20);
   const skip = parseInt(request.query.skip || 0);
@@ -42,7 +41,7 @@ export default async function getAllLocations(request, response) {
 
   response.json(
     id
-      ? { ...result[0], url: URLBuilder(result[0]._id, "cheese") }
+      ? { ...result[0], url: URLBuilder(result[0]?._id, "cheese") }
       : presentation
   );
   response.end();

@@ -64,7 +64,10 @@ const SecondarySpeakerSchema = new Schema({
 });
 
 const LocationSchema = new Schema({
-  name: String,
+  name: {
+    type: String,
+    required: [true, "A location requires a name"],
+  },
   address: String,
   city: String,
   image: ImageSchema,
