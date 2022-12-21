@@ -27,7 +27,7 @@ export default async function token(request, response) {
     }
 
     const newToken = jwt.sign(
-      { username: user.username },
+      { username: user.username, id: user._id },
       process.env.TOKEN_SECRET,
       {
         expiresIn: "1d",
