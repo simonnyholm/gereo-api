@@ -20,12 +20,12 @@ export default async function getAllUsers(request, response) {
     skip + limit >= length
       ? null
       : process.env.HOST_ADDRESS +
-        `/api/v1/cheeses?limit=${limit}&skip=${skip + limit}`;
+        `/api/v1/locations?limit=${limit}&skip=${skip + limit}`;
   const previousLink =
     skip === 0
       ? null
       : process.env.HOST_ADDRESS +
-        `/api/v1/cheeses?limit=${limit}&skip=${
+        `/api/v1/locations?limit=${limit}&skip=${
           skip - limit < 0 ? 0 : skip - limit
         }`;
 
@@ -35,13 +35,13 @@ export default async function getAllUsers(request, response) {
     previous: previousLink,
     results: result.map((item) => ({
       ...item,
-      url: URLBuilder(item._id, "cheese"),
+      url: URLBuilder(item._id, "location"),
     })),
   };
 
   response.json(
     id
-      ? { ...result[0], url: URLBuilder(result[0]?._id, "cheese") }
+      ? { ...result[0], url: URLBuilder(result[0]?._id, "location") }
       : presentation
   );
   response.end();

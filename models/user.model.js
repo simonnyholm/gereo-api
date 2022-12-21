@@ -1,4 +1,5 @@
 import { model, Schema } from "mongoose";
+import permissions from "mongoose-permissions";
 
 const UserSchema = new Schema({
   username: {
@@ -9,7 +10,7 @@ const UserSchema = new Schema({
     type: String,
     required: [true, "A password is required"],
   },
-});
+}).plugin(permissions);
 
 const User = model("User", UserSchema);
 
