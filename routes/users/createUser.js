@@ -25,6 +25,7 @@ export default async function createUser(request, response) {
     const user = new User({
       username: request.body.username,
       password: hash,
+      roletag: request.body.roletag,
     });
 
     user.assignRole(roles[1]);
