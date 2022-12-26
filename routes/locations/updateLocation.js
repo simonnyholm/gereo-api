@@ -1,5 +1,7 @@
 import { unlink } from "node:fs/promises";
 import Location from "../../models/location.model.js";
+import jwt_decode from "jwt-decode";
+import user from "../../models/user.model.js";
 
 export default async function updateLocation(request, response) {
   try {
@@ -16,15 +18,24 @@ export default async function updateLocation(request, response) {
       await unlink(oldResult.image.path);
     }
 
-    const result = await Location.findByIdAndUpdate(
-      request.params.id,
-      document,
-      { returnOriginal: false }
-    );
+    const splitToken = request.headers.authorization.split(" ")[1];
 
-    response.status(200);
-    response.json(result);
-    response.end();
+    const decodedToken = jwt_decode(splitToken);
+
+    const userToConfirm = await user.findById(decodedToken.id);
+
+    if (userToConfirm.can("update-location")) {
+      console.log("prutmigiøretigen-uh");
+      const result = await Location.findByIdAndUpdate(
+        request.params.id,
+        document,
+        { returnOriginal: false }
+      );
+
+      response.status(200);
+      response.json(result);
+      response.end();
+    }
   } catch (error) {
     if (error._message) {
       response.status(400);
