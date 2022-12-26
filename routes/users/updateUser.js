@@ -44,7 +44,7 @@ export default async function updateUser(request, response) {
       if (request.body.roletag == "c") {
         console.log("Assign admin role");
         await result.assignRole({
-          name: "admin",
+          name: "creator",
           permissions: [
             {
               name: "create-location",
