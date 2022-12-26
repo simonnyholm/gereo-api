@@ -4,9 +4,6 @@ import user from "../../models/user.model.js";
 export default async function deleteUser(request, response) {
   const id = request.params.id;
   if (id) {
-    const itemToDelete = await user.findById(id);
-    console.log(itemToDelete);
-
     const splitToken = request.headers.authorization.split(" ")[1];
 
     const decodedToken = jwt_decode(splitToken);
