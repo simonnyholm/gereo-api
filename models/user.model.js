@@ -10,6 +10,9 @@ const UserSchema = new Schema({
     type: String,
     required: [true, "A password is required"],
   },
+  roletag: {
+    type: String,
+  },
 }).plugin(permissions);
 
 const User = model("User", UserSchema);
