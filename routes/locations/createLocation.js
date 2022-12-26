@@ -11,7 +11,7 @@ export default async function createLOcation(request, response) {
 
     const location = new Location(document);
 
-    //Her følger den amazing code:
+    //Her følger den amazing code, hvor jeg ved hjælp af users token finder frem til users id:
 
     const splitToken = request.headers.authorization.split(" ")[1];
 
@@ -34,15 +34,7 @@ export default async function createLOcation(request, response) {
       await location.save();
     }
 
-    //if (permission){ await save}
 
-    /*
-
-    if (decodedToken.id == ) {
-      console.log("huligennem");
-    }
-
-    */
 
     response.status(201);
     response.json(location);
