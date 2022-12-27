@@ -30,6 +30,14 @@ const roles = [
       },
     ],
   },
+  {
+    name: "Former",
+    permissions: [
+    //   {
+    //     name: "get-location",
+    //   },
+    ],
+  },
 ];
 
 export default roles;

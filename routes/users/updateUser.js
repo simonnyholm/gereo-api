@@ -42,7 +42,7 @@ export default async function updateUser(request, response) {
       }
 
       if (request.body.roletag == "c") {
-        console.log("Assign admin role");
+        console.log("Assign creator role");
         await result.assignRole({
           name: "creator",
           permissions: [
@@ -53,6 +53,14 @@ export default async function updateUser(request, response) {
               name: "update-location",
             },
           ],
+        });
+      }
+
+      if (request.body.roletag == "f") {
+        console.log("Assign formerly permitted role");
+        await result.assignRole({
+          name: "former",
+          permissions: [],
         });
       }
 
