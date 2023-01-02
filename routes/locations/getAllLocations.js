@@ -13,7 +13,7 @@ export default async function getAllLocations(request, response) {
   const skip = parseInt(request.query.skip || 0);
 
   const query = id ? { _id: ObjectId(id) } : {};
-  const result = await location.find(query).limit(limit).skip(skip);
+  const result = await location.find(query).limit(limit).skip(skip).lean();
   const length = await location.countDocuments();
 
   const nextLink =
