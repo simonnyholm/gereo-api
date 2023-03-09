@@ -1,5 +1,6 @@
 import User from "../../models/user.model.js";
-import bcrypt from "bcryptjs";
+import bcryptjs from "bcryptjs";
+//import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
@@ -20,7 +21,7 @@ export default async function token(request, response) {
       return;
     }
 
-    if (!(await bcrypt.compare(request.body.password, user.password))) {
+    if (!(await bcryptjs.compare(request.body.password, user.password))) {
       response.status(403);
       response.end();
       return;
